@@ -141,7 +141,7 @@
         </div>
       </section>
 
-      <section data-bespoke-state="livecode">
+      <section data-bespoke-state="livecode long">
         <div class="content">
           <h4>We add the ng-app attribute</h4>
           <pre><code class="language-markup">
@@ -176,9 +176,9 @@ angular.module('questionarie', [])
         </div>
       </section>
 
-      <section data-bespoke-state="livecode">
+      <section data-bespoke-state="livecode long">
         <div class="content">
-          <div ng-app="questionarie" ng-controller="QuestionarieCtrl">
+          <div data-angular-app="questionarie" ng-controller="QuestionarieCtrl">
             <label>Name: </label>
             <div>
               <input type="text" ng-model="person.name" />
@@ -461,7 +461,7 @@ angular.module('questionarie', []).config(function(AlerterProvider) {
         </div>
       </section>
 
-            <section data-bespoke-state="livecode long">
+      <section data-bespoke-state="livecode long">
         <div class="content">
 
           <pre><code class="language-javascript">// Service
@@ -492,9 +492,425 @@ function Service() {
 
       <section data-bespoke-state="excercise">
         <div class="content">
-          <h3>Excercise time: email-checker</h3>
+          <h3>Excercise time: email-checker with EmailService</h3>
         </div>
       </section>
+
+      <section>
+        <div class="content">
+          <h3>We're going to have person cards that show user info throughout the page</h3>
+        </div>
+      </section>
+
+
+      <section data-bespoke-state="livecode long">
+        <div class="content">
+          <pre><code class="language-markup">&lt;div ng-show=&quot;cardShown&quot; class=&quot;card&quot;&gt;
+    &lt;p class=&quot;name&quot;&gt;Description of {{person.name}}&lt;/p&gt;
+    &lt;div ng-switch=&quot;person.likeNyan&quot;&gt;
+      &lt;p ng-switch-when=&quot;true&quot;&gt;This person is really fun&lt;/p&gt;
+      &lt;p ng-switch-when=&quot;false&quot;&gt;This person is extremely boring&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </section>
+
+
+      <section>
+        <div class="content">
+          <h3>We don't want to copy &amp; paste the code to do this everytime</h3>
+        </div>
+      </section>
+
+      <section>
+        <div class="content">
+          <h3>It'd be really good if we could create own own HTML tags like &lt;person-card&gt;</h3>
+        </div>
+      </section>
+
+      <section>
+        <div class="content">
+          <h3>We actually can. Let's do it</h3>
+        </div>
+      </section>
+
+      <section data-bespoke-state="livecode long">
+        <div class="content">
+          <div data-angular-app="questionarieTwo" ng-controller="QuestionarieCtrlWithDirective">
+            <label>Name: </label>
+            <div>
+              <input type="text" ng-model="person.name" />
+            </div>
+            <label>Do you like Nyan Cat?: </label>
+            <div>
+              <input type="checkbox" ng-model="person.likeNyan" />
+            </div>
+            <input type="button" ng-click="showProfileCard()" value="Show profile card">
+            <input type="button" ng-click="showResponse()" value="What is {{person.name}}?">
+            <person-card on-collapse="log(person)" title="Hey there" person="person" show="cardShown" />
+          </div>
+        </div>
+      </section>
+
+      <section data-bespoke-state="livecode long">
+        <div class="content">
+          <pre data-line="10"><code class="language-markup">&lt;div ng-app="questionarie2" ng-controller=&quot;QuestionarieCtrlWithDirective&quot;&gt;
+  &lt;label&gt;Name: &lt;/label&gt;
+  &lt;input type=&quot;text&quot; ng-model=&quot;person.name&quot; /&gt;
+  &lt;label&gt;Do you like Nyan Cat?: &lt;/label&gt;
+  &lt;input type=&quot;checkbox&quot; ng-model=&quot;person.likeNyan&quot; /&gt;
+
+  &lt;input type=&quot;button&quot; ng-click=&quot;showProfileCard()&quot; value=&quot;Show profile card&quot;&gt;
+  &lt;input type=&quot;button&quot; ng-click=&quot;showResponse()&quot; value=&quot;What is {{person.name}}?&quot;&gt;
+
+  &lt;person-card on-collapse=&quot;log(person)&quot; person=&quot;person&quot; show=&quot;cardShown&quot; title=&quot;Hey there&quot; /&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </section>
+
+
+      <section data-bespoke-state="livecode long">
+        <div class="content nofade">
+          <pre data-line="2"><code class="language-javascript">angular.module('questionarie')
+.directive('personCard', function() {
+  return {
+    restrict: 'E',
+    replace: true,
+    templateUrl: '/tpls/personCard.html',
+    scope: {
+      person: '=',
+      show: '=',
+      onCollapse: '&amp;',
+      title: '@'
+    },
+    controller: function($scope) {
+      $scope.collapse = function() {
+        $scope.show = false;
+        $scope.onCollapse &amp;&amp; $scope.onCollapse();
+      }
+    }
+  };
+});</code></pre>
+        </div>
+      </section>
+
+        <section data-bespoke-state="livecode long">
+        <div class="content nofade">
+          <pre data-line="4"><code class="language-javascript">angular.module('questionarie')
+.directive('personCard', function() {
+  return {
+    restrict: 'E',
+    replace: true,
+    templateUrl: '/tpls/personCard.html',
+    scope: {
+      person: '=',
+      show: '=',
+      onCollapse: '&amp;',
+      title: '@'
+    },
+    controller: function($scope) {
+      $scope.collapse = function() {
+        $scope.show = false;
+        $scope.onCollapse &amp;&amp; $scope.onCollapse();
+      }
+    }
+  };
+});</code></pre>
+        </div>
+
+      </section>
+
+      <section data-bespoke-state="livecode long">
+        <div class="content nofade">
+          <pre data-line="5"><code class="language-javascript">angular.module('questionarie')
+.directive('personCard', function() {
+  return {
+    restrict: 'E',
+    replace: true,
+    templateUrl: '/tpls/personCard.html',
+    scope: {
+      person: '=',
+      show: '=',
+      onCollapse: '&amp;',
+      title: '@'
+    },
+    controller: function($scope) {
+      $scope.collapse = function() {
+        $scope.show = false;
+        $scope.onCollapse &amp;&amp; $scope.onCollapse();
+      }
+    }
+  };
+});</code></pre>
+        </div>
+
+      </section>
+
+      <section data-bespoke-state="livecode long">
+        <div class="content nofade">
+          <pre data-line="6"><code class="language-javascript">angular.module('questionarie')
+.directive('personCard', function() {
+  return {
+    restrict: 'E',
+    replace: true,
+    templateUrl: '/tpls/personCard.html',
+    scope: {
+      person: '=',
+      show: '=',
+      onCollapse: '&amp;',
+      title: '@'
+    },
+    controller: function($scope) {
+      $scope.collapse = function() {
+        $scope.show = false;
+        $scope.onCollapse &amp;&amp; $scope.onCollapse();
+      }
+    }
+  };
+});</code></pre>
+        </div>
+    </section>
+
+
+        <section data-bespoke-state="livecode long">
+        <div class="content nofade">
+          <pre><code class="language-markup">&lt;div ng-show=&quot;show&quot; class=&quot;card&quot;&gt;
+  &lt;p class=&quot;name&quot;&gt;Description of {{person.name}}&lt;/p&gt;
+  &lt;div ng-switch=&quot;person.likeNyan&quot;&gt;
+    &lt;p ng-switch-when=&quot;true&quot;&gt;This person is really fun&lt;/p&gt;
+    &lt;p ng-switch-when=&quot;false&quot;&gt;This person is extremely boring&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;button ng-click=&quot;collapse()&quot;&gt;Collapse&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </section>
+
+
+      <section data-bespoke-state="livecode long">
+        <div class="content nofade">
+          <pre data-line="7-12"><code class="language-javascript">angular.module('questionarie')
+.directive('personCard', function() {
+  return {
+    restrict: 'E',
+    replace: true,
+    templateUrl: '/tpls/personCard.html',
+    scope: {
+      person: '=',
+      show: '=',
+      onCollapse: '&amp;',
+      title: '@'
+    },
+    controller: function($scope) {
+      $scope.collapse = function() {
+        $scope.show = false;
+        $scope.onCollapse &amp;&amp; $scope.onCollapse();
+      }
+    }
+  };
+});</code></pre>
+        </div>
+
+      </section>
+
+      <section data-bespoke-state="livecode long">
+        <div class="content nofade">
+          <pre data-line="8,9"><code class="language-javascript">angular.module('questionarie')
+.directive('personCard', function() {
+  return {
+    restrict: 'E',
+    replace: true,
+    templateUrl: '/tpls/personCard.html',
+    scope: {
+      person: '=',
+      show: '=',
+      onCollapse: '&amp;',
+      title: '@'
+    },
+    controller: function($scope) {
+      $scope.collapse = function() {
+        $scope.show = false;
+        $scope.onCollapse &amp;&amp; $scope.onCollapse();
+      }
+    }
+  };
+});</code></pre>
+        </div>
+
+      </section>
+
+      <section data-bespoke-state="livecode long">
+        <div class="content nofade">
+          <h4>Main Page</h4>
+          <pre><code class="language-markup">&lt;person-card person=&quot;person&quot; show=&quot;cardShown&quot; /&gt;
+          </code></pre>
+          <pre><code class="language-javascript">$scope.person // ==> has the person object
+$scope.cardShown = false; // ==> $scope.show from directive will turn false
+          </code></pre>
+          <h4>Directive</h4>
+          <pre><code class="language-markup">
+&lt;div ng-show=&quot;show&quot; class=&quot;card&quot;&gt;
+  &lt;p class=&quot;name&quot;&gt;Description of {{person.name}}&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+<pre><code class="language-javascript">$scope.person // ==> has the person object
+$scope.show = false; // ==> $scope.cardShown from main page will turn false
+          </code></pre>
+        </div>
+      </section>
+
+      <section data-bespoke-state="livecode long">
+        <div class="content nofade">
+          <pre data-line="10"><code class="language-javascript">angular.module('questionarie')
+.directive('personCard', function() {
+  return {
+    restrict: 'E',
+    replace: true,
+    templateUrl: '/tpls/personCard.html',
+    scope: {
+      person: '=',
+      show: '=',
+      onCollapse: '&amp;',
+      title: '@'
+    },
+    controller: function($scope) {
+      $scope.collapse = function() {
+        $scope.show = false;
+        $scope.onCollapse &amp;&amp; $scope.onCollapse();
+      }
+    }
+  };
+});</code></pre>
+        </div>
+
+      </section>
+
+      <section data-bespoke-state="livecode long">
+        <div class="content nofade">
+          <h4>Main Page</h4>
+          <pre><code class="language-markup">&lt;person-card onCollapse=&quot;log(person)&quot; /&gt;</code></pre>
+          <pre><code class="language-javascript">$scope.log = function(person) {
+  console.log("Person is", person);
+}</code></pre>
+
+          <h4>Directive</h4>
+<pre><code class="language-javascript">$scope.onCollapse() // Will call log(person)
+// It's implemented like:
+$scopeOfDirective.onCollapse = function() {
+  $scopeOfMainPage.log($scopeOfMainPage.person);
+};</code></pre>
+        </div>
+      </section>
+
+      <section data-bespoke-state="livecode long">
+        <div class="content nofade">
+          <pre data-line="11"><code class="language-javascript">angular.module('questionarie')
+.directive('personCard', function() {
+  return {
+    restrict: 'E',
+    replace: true,
+    templateUrl: '/tpls/personCard.html',
+    scope: {
+      person: '=',
+      show: '=',
+      onCollapse: '&amp;',
+      title: '@'
+    },
+    controller: function($scope) {
+      $scope.collapse = function() {
+        $scope.show = false;
+        $scope.onCollapse &amp;&amp; $scope.onCollapse();
+      }
+    }
+  };
+});</code></pre>
+        </div>
+
+      </section>
+
+      <section data-bespoke-state="livecode long">
+        <div class="content nofade">
+          <h4>Main Page</h4>
+          <pre><code class="language-markup">&lt;person-card title=&quot;some cool text&quot; /&gt;
+          </code></pre>
+          <h4>Directive</h4>
+<pre><code class="language-javascript">$scope.title // ==> has the string "some cool text"</code></pre>
+        </div>
+      </section>
+
+
+
+      <section data-bespoke-state="livecode long">
+        <div class="content nofade">
+          <pre data-line="13-17"><code class="language-javascript">angular.module('questionarie')
+.directive('personCard', function() {
+  return {
+    restrict: 'E',
+    replace: true,
+    templateUrl: '/tpls/personCard.html',
+    scope: {
+      person: '=',
+      show: '=',
+      onCollapse: '&amp;',
+      title: '@'
+    },
+    controller: function($scope) {
+      $scope.collapse = function() {
+        $scope.show = false;
+        $scope.onCollapse &amp;&amp; $scope.onCollapse();
+      }
+    }
+  };
+});</code></pre>
+        </div>
+
+      </section>
+
+      <section data-bespoke-state="livecode long">
+        <div class="content nofade">
+          <pre data-line="13-17"><code class="language-javascript">angular.module('questionarie')
+.directive('personCard', function() {
+  return {
+    restrict: 'E',
+    replace: true,
+    templateUrl: '/tpls/personCard.html',
+    scope: {
+      person: '=',
+      show: '=',
+      onCollapse: '&amp;',
+      title: '@'
+    },
+    link: function($scope, $attrs, $element) {
+      $scope.collapse = function() {
+        $scope.show = false;
+        $scope.onCollapse &amp;&amp; $scope.onCollapse();
+      }
+    }
+  };
+});</code></pre>
+        </div>
+
+      </section>
+
+      <section>
+        <div class="content list">
+          <div class="unbrokenline"></div>
+          <h2>Directives</h2>
+          <div class="unbrokenline"></div>
+          <div class="fake-list">
+            <h4>- Reusable HTML + JS + CSS components</h4>
+            <h4>- They can have isolated scope or not, with different scope bindings</h4>
+            <h4>- link and controller are the 2 usual places where we can add behaviour</h4>
+            <h4 class="thumb">- Thumb rule: Create when you copy &amp; paste some common HTML markup or logic for that markup</h4>
+          </div>
+        </div>
+      </section>
+
+      <section data-bespoke-state="excercise">
+        <div class="content list">
+          <div class="h2">Excercise time: </div>
+        </div>
+      </section>
+
 
       <section>
         <div class="content">
