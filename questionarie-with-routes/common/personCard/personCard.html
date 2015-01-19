@@ -1,0 +1,9 @@
+<div ng-show="show" class="card" style="border: 1px solid;">
+  <p>{{title}}</p>
+  <p class="name">Description of {{person.name}}</p>
+  <div ng-switch="person.likeNyan">
+    <p ng-switch-when="true">This person is really fun</p>
+    <p ng-switch-when="false">This person is extremely boring</p>
+  </div>
+  <button ng-click="collapse()">Collapse</button>
+</div>

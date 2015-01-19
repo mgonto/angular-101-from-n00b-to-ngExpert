@@ -1,0 +1,15 @@
+<div class="show-container jumbotron center-block">
+  <form role="form">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" ng-model="person.name" class="form-control" placeholder="Name">
+    </div>
+    <div class="form-group">
+      <label>Do you like Nyan Cat?: </label>
+      <input type="checkbox" ng-model="person.likeNyan" />
+    </div>
+    <button type="submit" class="btn btn-default" ng-click="showProfileCard()">Show profile card</button>
+    <button type="submit" class="btn btn-default" ng-click="showResponse()">What is {{person.name}}?</button>
+  </form>
+  <person-card on-collapse="log(person)" title="Hey there" person="person" show="cardShown" />
+</div>

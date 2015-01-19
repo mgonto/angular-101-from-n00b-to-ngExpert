@@ -1,0 +1,8 @@
+<div>
+  <label>Saerch for people:</label>
+  <input type="text" ng-model="search" />
+  <ul ng-repeat="person in people | filter:search">
+  <!-- <ul ng-repeat="person in people">-->
+    <li><a ui-sref="show({id: person.id})">{{person.name | prefix:'Show '}}</a></li>
+  </ul>
+</div>

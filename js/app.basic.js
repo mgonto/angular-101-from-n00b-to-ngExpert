@@ -1,6 +1,7 @@
 [
   angular.module('questionarie', []),
-  angular.module('questionarieTwo', [])
+  angular.module('questionarieTwo', []),
+  angular.module('questionarieThree', [])
 ].forEach(function(module) {
   module
     .controller('QuestionarieCtrl', function($scope) {
@@ -18,6 +19,7 @@
       alert($scope.person.likeNyan ? "Fun" : "Boring");
     }
   })
+  // Adding a service to alert
   .controller('QuestionarieCtrlWithService', function($scope, Alerter) {
 
     $scope.person = {
@@ -38,6 +40,7 @@
       alert(text);
     }
   })
+  // Adding a directive to show person card
   .controller('QuestionarieCtrlWithDirective', function($scope, Alerter) {
 
     $scope.person = {
