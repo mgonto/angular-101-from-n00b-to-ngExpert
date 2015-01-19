@@ -201,115 +201,9 @@ article.smoke::before {
   background-image: url("../img/smoke.gif");
 }
 
-article.old-web::before {
-  -webkit-filter: none;
-  -moz-filter: none;
-  filter: none;
-  background-size: 80%;
-  background-image: url("../img/SpaceJam.gif");
+article.excercise {
+  background-color: green;
 }
-
-article.current-web::before {
-  -webkit-filter: none;
-  -moz-filter: none;
-  filter: none;
-  background-size: 80%;
-  background-image: url("../img/Auth0.gif");
-}
-
-article.lost::before {
-  -webkit-filter: none;
-  -moz-filter: none;
-  filter: none;
-  background-image: url("../img/lost.gif");
-}
-
-article.persian-cat::before {
-  -webkit-filter: blur(2.25px) grayscale(0.3) brightness(0.4);
-  -moz-filter: blur(2.25px) grayscale(0.3) brightness(0.4);
-  filter: blur(2.25px) grayscale(0.3) brightness(0.4);
-  background-image: url("../img/persian.jpg");
-}
-
-article.not-cool::before {
-  -webkit-filter: none;
-  -moz-filter: none;
-  filter: none;
-  background-image: url("../img/notcool.gif");
-}
-
-
-article.chuck::before {
-  -webkit-filter: blur(2.25px) grayscale(0.3) brightness(0.4);
-  -moz-filter: blur(2.25px) grayscale(0.3) brightness(0.4);
-  filter: blur(2.25px) grayscale(0.3) brightness(0.4);
-  background-image: url("../img/chuck.jpg");
-}
-
-
-article.options::before {
-  -webkit-filter: blur(2.25px) grayscale(0.3) brightness(0.4);
-  -moz-filter: blur(2.25px) grayscale(0.3) brightness(0.4);
-  filter: blur(2.25px) grayscale(0.3) brightness(0.4);
-  background-image: url("../img/options.jpg");
-}
-
-article.subject-change::before {
-  -webkit-filter: blur(2.25px) grayscale(0.3) brightness(0.4);
-  -moz-filter: blur(2.25px) grayscale(0.3) brightness(0.4);
-  filter: blur(2.25px) grayscale(0.3) brightness(0.4);
-  background: green;
-}
-
-article.sub-subject-change::before {
-  -webkit-filter: blur(2.25px) grayscale(0.3) brightness(0.4);
-  -moz-filter: blur(2.25px) grayscale(0.3) brightness(0.4);
-  filter: blur(2.25px) grayscale(0.3) brightness(0.4);
-  background: gray;
-}
-
-
-
-article.dive::before {
-  -webkit-filter: none;
-  -moz-filter: none;
-  filter: none;
-  background-position: top;
-  background-image: url("../img/dive.gif");
-}
-
-article.dump-elephant::before {
-  -webkit-filter: none;
-  -moz-filter: none;
-  filter: none;
-  background-position: top;
-  background-image: url("../img/dump-elephant.gif");
-}
-
-article.boom::before {
-  -webkit-filter: none;
-  -moz-filter: none;
-  filter: none;
-  background-position: top;
-  background-image: url("../img/boom.gif");
-}
-
-article.bobby::before {
-  -webkit-filter: none;
-  -moz-filter: none;
-  filter: none;
-  background-size: contain;
-  background-image: url("../img/bobby.png");
-}
-
-article.boom-save::before {
-  -webkit-filter: none;
-  -moz-filter: none;
-  filter: none;
-  background-position: top;
-  background-image: url("../img/boom-save.gif");
-}
-
 
 .profile {
   margin: 0 auto;
@@ -334,4 +228,14 @@ article.boom-save::before {
   display: inline-block;
   text-transform: lowercase;
   font-size: 2em;
+}
+
+.card {
+  border: 1px solid;
+  padding: 1px;
+}
+
+.card p.name {
+  font-weight: bold;
+  text-decoration: underline;
 }

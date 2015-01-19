@@ -104,7 +104,7 @@
       <section>
         <div class="content list">
           <div class="unbrokenline"></div>
-          <h2>Angular's creation</h2>
+          <h3>Angular's creation</h3>
           <div class="unbrokenline"></div>
           <div class="fake-list">
             <h4>- It was created by Miško Hevery</h4>
@@ -118,7 +118,7 @@
       <section>
         <div class="content list">
           <div class="unbrokenline"></div>
-          <h2>Angular's 4D</h2>
+          <h3>Angular's 4D</h3>
           <div class="unbrokenline"></div>
           <div class="fake-list" style="min-width: 500px">
             <h4 class="important">- Declarative</h4>
@@ -131,13 +131,13 @@
 
       <section>
         <div class="content">
-          <h2>So let's start learning this</h2>
+          <h3>So let's start learning this</h3>
         </div>
       </section>
 
       <section>
         <div class="content">
-          <h2>First thing we need to do is create an app</h2>
+          <h3>First thing we need to do is create an app</h3>
         </div>
       </section>
 
@@ -145,13 +145,13 @@
         <div class="content">
           <h4>We add the ng-app attribute</h4>
           <pre><code class="language-markup">
-&lt;div ng-app="myCoolApp" &gt;
+&lt;div ng-app="questionarie" &gt;
   &lt;span&gt;Hello World&lt;/span&gt;
 &lt;/div&gt;
           </code></pre>
           <h4>We create the APP in JS</h4>
           <pre><code class="language-javascript">
-angular.module('myCoolApp', [])
+angular.module('questionarie', [])
           </code></pre>
 
         </div>
@@ -160,7 +160,7 @@ angular.module('myCoolApp', [])
       <section>
         <div class="content list">
           <div class="unbrokenline"></div>
-          <h2>Angular App</h2>
+          <h3>Angular App</h3>
           <div class="unbrokenline"></div>
           <div class="fake-list">
             <h4>- Every app is a module</h4>
@@ -172,7 +172,7 @@ angular.module('myCoolApp', [])
 
       <section>
         <div class="content">
-          <h2>Now let's add some logic</h2>
+          <h3>Now let's add some logic</h3>
         </div>
       </section>
 
@@ -187,82 +187,131 @@ angular.module('myCoolApp', [])
             <div>
               <input type="checkbox" ng-model="person.likeNyan" />
             </div>
-            <p>Dear {{person.name}}, <input type="button" ng-click="showResponse()" value="click here"> to get your personal message</p>
+            <input type="button" ng-click="showProfileCard()" value="Show profile card">
+            <input type="button" ng-click="showResponse()" value="What is {{person.name}}?">
+            <div ng-show="cardShown" class="card">
+              <p class="name">Description of {{person.name}}</p>
+              <div ng-switch="person.likeNyan">
+                <p ng-switch-when="true">This person is really fun</p>
+                <p ng-switch-when="false">This person is extremely boring</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section data-bespoke-state="livecode">
+      <section data-bespoke-state="livecode long">
         <div class="content">
-          <h4>Markup</h4>
           <pre data-line="1"><code class="language-markup">&lt;div ng-app=&quot;questionarie&quot; ng-controller=&quot;QuestionarieCtrl&quot;&gt;
   &lt;label&gt;Name: &lt;/label&gt;
-  &lt;div&gt;
-    &lt;input type=&quot;text&quot; ng-model=&quot;person.name&quot; /&gt;
-  &lt;/div&gt;
+  &lt;input type=&quot;text&quot; ng-model=&quot;person.name&quot; /&gt;
   &lt;label&gt;Do you like Nyan Cat?: &lt;/label&gt;
-  &lt;div&gt;
-    &lt;input type=&quot;checkbox&quot; ng-model=&quot;person.likeNyan&quot; /&gt;
+  &lt;input type=&quot;checkbox&quot; ng-model=&quot;person.likeNyan&quot; /&gt;
+
+  &lt;input type=&quot;button&quot; ng-click=&quot;showProfileCard()&quot; value=&quot;Show profile card&quot;&gt;
+  &lt;input type=&quot;button&quot; ng-click=&quot;showResponse()&quot; value=&quot;What is {{person.name}}?&quot;&gt;
+
+  &lt;div ng-show=&quot;cardShown&quot; class=&quot;card&quot;&gt;
+    &lt;p class=&quot;name&quot;&gt;Description of {{person.name}}&lt;/p&gt;
+    &lt;div ng-switch=&quot;person.likeNyan&quot;&gt;
+      &lt;p ng-switch-when=&quot;true&quot;&gt;This person is really fun&lt;/p&gt;
+      &lt;p ng-switch-when=&quot;false&quot;&gt;This person is extremely boring&lt;/p&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
-  &lt;p&gt;Dear {{person.name}}, &lt;input type=&quot;button&quot; ng-click=&quot;showResponse()&quot; value=&quot;click here&quot;&gt; to get your personal message&lt;/p&gt;
 &lt;/div&gt;</code></pre>
         </div>
       </section>
 
-      <section data-bespoke-state="livecode">
+      <section data-bespoke-state="livecode long">
         <div class="content nofade">
-          <h4>Markup</h4>
-          <pre data-line="4"><code class="language-markup">&lt;div ng-app=&quot;questionarie&quot; ng-controller=&quot;QuestionarieCtrl&quot;&gt;
+          <pre data-line="3"><code class="language-markup">&lt;div ng-app=&quot;questionarie&quot; ng-controller=&quot;QuestionarieCtrl&quot;&gt;
   &lt;label&gt;Name: &lt;/label&gt;
-  &lt;div&gt;
-    &lt;input type=&quot;text&quot; ng-model=&quot;person.name&quot; /&gt;
-  &lt;/div&gt;
+  &lt;input type=&quot;text&quot; ng-model=&quot;person.name&quot; /&gt;
   &lt;label&gt;Do you like Nyan Cat?: &lt;/label&gt;
-  &lt;div&gt;
-    &lt;input type=&quot;checkbox&quot; ng-model=&quot;person.likeNyan&quot; /&gt;
+  &lt;input type=&quot;checkbox&quot; ng-model=&quot;person.likeNyan&quot; /&gt;
+
+  &lt;input type=&quot;button&quot; ng-click=&quot;showProfileCard()&quot; value=&quot;Show profile card&quot;&gt;
+  &lt;input type=&quot;button&quot; ng-click=&quot;showResponse()&quot; value=&quot;What is {{person.name}}?&quot;&gt;
+
+  &lt;div ng-show=&quot;cardShown&quot; class=&quot;card&quot;&gt;
+    &lt;p class=&quot;name&quot;&gt;Description of {{person.name}}&lt;/p&gt;
+    &lt;div ng-switch=&quot;person.likeNyan&quot;&gt;
+      &lt;p ng-switch-when=&quot;true&quot;&gt;This person is really fun&lt;/p&gt;
+      &lt;p ng-switch-when=&quot;false&quot;&gt;This person is extremely boring&lt;/p&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
-  &lt;p&gt;Dear {{person.name}}, &lt;input type=&quot;button&quot; ng-click=&quot;showResponse()&quot; value=&quot;click here&quot;&gt; to get your personal message&lt;/p&gt;
 &lt;/div&gt;</code></pre>
         </div>
       </section>
 
-      <section data-bespoke-state="livecode">
+      <section data-bespoke-state="livecode long">
         <div class="content nofade">
-          <h4>Markup</h4>
-          <pre data-line="8"><code class="language-markup">&lt;div ng-app=&quot;questionarie&quot; ng-controller=&quot;QuestionarieCtrl&quot;&gt;
+          <pre data-line="5"><code class="language-markup">&lt;div ng-app=&quot;questionarie&quot; ng-controller=&quot;QuestionarieCtrl&quot;&gt;
   &lt;label&gt;Name: &lt;/label&gt;
-  &lt;div&gt;
-    &lt;input type=&quot;text&quot; ng-model=&quot;person.name&quot; /&gt;
-  &lt;/div&gt;
+  &lt;input type=&quot;text&quot; ng-model=&quot;person.name&quot; /&gt;
   &lt;label&gt;Do you like Nyan Cat?: &lt;/label&gt;
-  &lt;div&gt;
-    &lt;input type=&quot;checkbox&quot; ng-model=&quot;person.likeNyan&quot; /&gt;
+  &lt;input type=&quot;checkbox&quot; ng-model=&quot;person.likeNyan&quot; /&gt;
+
+  &lt;input type=&quot;button&quot; ng-click=&quot;showProfileCard()&quot; value=&quot;Show profile card&quot;&gt;
+  &lt;input type=&quot;button&quot; ng-click=&quot;showResponse()&quot; value=&quot;What is {{person.name}}?&quot;&gt;
+
+  &lt;div ng-show=&quot;cardShown&quot; class=&quot;card&quot;&gt;
+    &lt;p class=&quot;name&quot;&gt;Description of {{person.name}}&lt;/p&gt;
+    &lt;div ng-switch=&quot;person.likeNyan&quot;&gt;
+      &lt;p ng-switch-when=&quot;true&quot;&gt;This person is really fun&lt;/p&gt;
+      &lt;p ng-switch-when=&quot;false&quot;&gt;This person is extremely boring&lt;/p&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
-  &lt;p&gt;Dear {{person.name}}, &lt;input type=&quot;button&quot; ng-click=&quot;showResponse()&quot; value=&quot;click here&quot;&gt; to get your personal message&lt;/p&gt;
 &lt;/div&gt;</code></pre>
         </div>
       </section>
 
-      <section data-bespoke-state="livecode">
+      <section data-bespoke-state="livecode long">
         <div class="content nofade">
-          <h4>Markup</h4>
-          <pre data-line="10,11"><code class="language-markup">&lt;div ng-app=&quot;questionarie&quot; ng-controller=&quot;QuestionarieCtrl&quot;&gt;
+          <pre data-line="7,8"><code class="language-markup">&lt;div ng-app=&quot;questionarie&quot; ng-controller=&quot;QuestionarieCtrl&quot;&gt;
   &lt;label&gt;Name: &lt;/label&gt;
-  &lt;div&gt;
-    &lt;input type=&quot;text&quot; ng-model=&quot;person.name&quot; /&gt;
-  &lt;/div&gt;
+  &lt;input type=&quot;text&quot; ng-model=&quot;person.name&quot; /&gt;
   &lt;label&gt;Do you like Nyan Cat?: &lt;/label&gt;
-  &lt;div&gt;
-    &lt;input type=&quot;checkbox&quot; ng-model=&quot;person.likeNyan&quot; /&gt;
+  &lt;input type=&quot;checkbox&quot; ng-model=&quot;person.likeNyan&quot; /&gt;
+
+  &lt;input type=&quot;button&quot; ng-click=&quot;showProfileCard()&quot; value=&quot;Show profile card&quot;&gt;
+  &lt;input type=&quot;button&quot; ng-click=&quot;showResponse()&quot; value=&quot;What is {{person.name}}?&quot;&gt;
+
+  &lt;div ng-show=&quot;cardShown&quot; class=&quot;card&quot;&gt;
+    &lt;p class=&quot;name&quot;&gt;Description of {{person.name}}&lt;/p&gt;
+    &lt;div ng-switch=&quot;person.likeNyan&quot;&gt;
+      &lt;p ng-switch-when=&quot;true&quot;&gt;This person is really fun&lt;/p&gt;
+      &lt;p ng-switch-when=&quot;false&quot;&gt;This person is extremely boring&lt;/p&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
-  &lt;p&gt;Dear {{person.name}}, &lt;input type=&quot;button&quot; ng-click=&quot;showResponse()&quot; value=&quot;click here&quot;&gt; to get your personal message&lt;/p&gt;
 &lt;/div&gt;</code></pre>
         </div>
       </section>
 
-      <section data-bespoke-state="livecode">
+      <section data-bespoke-state="livecode long">
+        <div class="content nofade">
+          <pre data-line="10-16"><code class="language-markup">&lt;div ng-app=&quot;questionarie&quot; ng-controller=&quot;QuestionarieCtrl&quot;&gt;
+  &lt;label&gt;Name: &lt;/label&gt;
+  &lt;input type=&quot;text&quot; ng-model=&quot;person.name&quot; /&gt;
+  &lt;label&gt;Do you like Nyan Cat?: &lt;/label&gt;
+  &lt;input type=&quot;checkbox&quot; ng-model=&quot;person.likeNyan&quot; /&gt;
+
+  &lt;input type=&quot;button&quot; ng-click=&quot;showProfileCard()&quot; value=&quot;Show profile card&quot;&gt;
+  &lt;input type=&quot;button&quot; ng-click=&quot;showResponse()&quot; value=&quot;What is {{person.name}}?&quot;&gt;
+
+  &lt;div ng-show=&quot;cardShown&quot; class=&quot;card&quot;&gt;
+    &lt;p class=&quot;name&quot;&gt;Description of {{person.name}}&lt;/p&gt;
+    &lt;div ng-switch=&quot;person.likeNyan&quot;&gt;
+      &lt;p ng-switch-when=&quot;true&quot;&gt;This person is really fun&lt;/p&gt;
+      &lt;p ng-switch-when=&quot;false&quot;&gt;This person is extremely boring&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </section>
+
+      <section data-bespoke-state="livecode long">
         <div class="content">
-          <h4>JS</h4>
           <pre><code class="language-javascript">angular.module('questionarie', []);
   .controller('QuestionarieCtrl', function($scope) {
 
@@ -271,16 +320,15 @@ angular.module('myCoolApp', [])
     likeNyan: false
   };
 
-  $scope.showResponse = function() {
-    var text;
-    if ($scope.person.likeNyan) {
-      text = "Nyan is awesome!. You're awesome!";
-    } else {
-      text = "Don't be so boring! You should like nyan &lt;3";
-    }
-    alert(text);
+  $scope.showProfileCard = function() {
+    $scope.cardShown = true;
   };
-});</code></pre>
+
+  $scope.showResponse = function() {
+    alert($scope.person.likeNyan ? "Fun" : "Boring");
+  }
+});
+</code></pre>
         </div>
       </section>
 
@@ -288,7 +336,7 @@ angular.module('myCoolApp', [])
       <section>
         <div class="content list">
           <div class="unbrokenline"></div>
-          <h2>Controllers & Scope</h2>
+          <h3>Controllers & Scope</h3>
           <div class="unbrokenline"></div>
           <div class="fake-list">
             <h4>- The controller interacts with the model and receives input from the view</h4>
@@ -302,11 +350,151 @@ angular.module('myCoolApp', [])
 
       <section data-bespoke-state="excercise">
         <div class="content">
-          <h2>Excercise time!: email-checker</h2>
+          <h3>Excercise time: email-checker</h3>
         </div>
       </section>
 
+      <section>
+        <div class="content">
+          <h3>Now we know if you like Nyan Cat or not</h3>
+        </div>
+      </section>
 
+      <section>
+        <div class="content">
+          <h3>However, the alerting method is really coupled to the controller</h3>
+        </div>
+      </section>
+
+      <section data-bespoke-state="livecode long">
+        <div class="content">
+
+          <pre data-line="14"><code class="language-javascript">angular.module('questionarie', []);
+  .controller('QuestionarieCtrl', function($scope) {
+
+  $scope.person = {
+    name: 'John',
+    likeNyan: false
+  };
+
+  $scope.showProfileCard = function() {
+    $scope.cardShown = true;
+  };
+
+  $scope.showResponse = function() {
+    alert($scope.person.likeNyan ? "Fun" : "Boring");
+  }
+});
+</code></pre>
+        </div>
+      </section>
+
+      <section>
+        <div class="content">
+          <h3>Let's fix that</h3>
+        </div>
+      </section>
+
+      <section data-bespoke-state="livecode long">
+        <div class="content">
+
+          <pre><code class="language-javascript">
+angular.module('questionarie').factory('Alerter', function() {
+  var service = {};
+
+  service.alert = function(msg) {
+    alert(msg)
+  }
+
+  return service;
+
+});
+
+// Or
+angular.module('questionarie').service('Alerter', function() {
+  this.alert = function(msg) {
+    alert(msg);
+  }
+});
+          </code></pre>
+        </div>
+      </section>
+
+      <section data-bespoke-state="livecode long">
+        <div class="content">
+
+          <pre><code class="language-javascript">angular.module('questionarie').provider('Alerter', function() {
+
+  this.title = "Main Dialog";
+  this.setTitle = function(title) {
+    this.title = title;
+  }
+
+  this.$get = function() {
+    var title = this.title;
+    return {
+        alert: function(msg) {
+            alert(title + " " + msg);
+        }
+    }
+  }
+});
+
+angular.module('questionarie', []).config(function(AlerterProvider) {
+    AlerterProvider.setTitle("Dialog title");
+});</code></pre>
+        </div>
+      </section>
+
+      <section data-bespoke-state="livecode long">
+        <div class="content">
+
+          <pre><code class="language-javascript">// Factory
+.provider('MyService', function() {
+  this.$get = function() {
+    // This is the facotry function
+    var service = {};
+    service.sayHello = function() {...};
+    return service;
+  };
+});</code></pre>
+        </div>
+      </section>
+
+            <section data-bespoke-state="livecode long">
+        <div class="content">
+
+          <pre><code class="language-javascript">// Service
+function Service() {
+  this.sayHello = function() {...};
+}
+.provider('MyService', function() {
+  this.$get = function() {
+    return new Service();
+  };
+});</code></pre>
+        </div>
+      </section>
+
+      <section>
+        <div class="content list">
+          <div class="unbrokenline"></div>
+          <h2>Services</h2>
+          <div class="unbrokenline"></div>
+          <div class="fake-list">
+            <h4>- There're 3 ways of defining a service. The base one is provider</h4>
+            <h4>- You can add configurations to a provider service in the config of the app</h4>
+            <h4 class="important big">- Services are singleton and are instantiated the first time they're injected</h4>
+            <h4 class="thumb">- Thumb rule: Never use DOM elements from them</h4>
+          </div>
+        </div>
+      </section>
+
+      <section data-bespoke-state="excercise">
+        <div class="content">
+          <h3>Excercise time: email-checker</h3>
+        </div>
+      </section>
 
       <section>
         <div class="content">

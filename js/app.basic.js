@@ -8,14 +8,12 @@ angular.module('questionarie')
     likeNyan: false
   };
 
-  $scope.showResponse = function() {
-    var text;
-    if ($scope.person.likeNyan) {
-      text = "Nyan is awesome!. You're awesome!";
-    } else {
-      text = "Don't be so boring! You should like nyan <3";
-    }
-    alert(text);
+  $scope.showProfileCard = function() {
+    $scope.cardShown = true;
   };
+
+  $scope.showResponse = function() {
+    alert($scope.person.likeNyan ? "Fun" : "Boring");
+  }
 
 });
