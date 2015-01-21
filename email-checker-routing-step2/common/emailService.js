@@ -11,7 +11,7 @@ angular.module('emailChecker.emailService', [])
       var config = this;
       service.isValid = function(email) {
         return $http({
-          url: 'http://localhost:3001/check-email',
+          url: 'https://ng-email-checker.herokuapp.com/check-email',
           method: 'POST',
           data: {
             email: email
