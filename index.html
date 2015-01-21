@@ -34,7 +34,7 @@
               I am a
             </div>
           </div>
-          <h2>software developer</h2>
+          <h3>software developer</h3>
           <div class="byline">
             <div class="classy">
               from Buenos Aires, Argentina
@@ -479,7 +479,7 @@ function Service() {
       <section>
         <div class="content list">
           <div class="unbrokenline"></div>
-          <h2>Services</h2>
+          <h3>Services</h3>
           <div class="unbrokenline"></div>
           <div class="fake-list">
             <h4>- There're 3 ways of defining a service. The base one is provider</h4>
@@ -894,7 +894,7 @@ $scopeOfDirective.onCollapse = function() {
       <section>
         <div class="content list">
           <div class="unbrokenline"></div>
-          <h2>Directives</h2>
+          <h3>Directives</h3>
           <div class="unbrokenline"></div>
           <div class="fake-list">
             <h4>- Reusable HTML + JS + CSS components</h4>
@@ -934,6 +934,315 @@ $scopeOfDirective.onCollapse = function() {
           <h3>Demo time: questionarie-with-routing</h3>
         </div>
       </section>
+
+      <section>
+        <div class="content list">
+          <div class="unbrokenline"></div>
+          <h3>Routing</h3>
+          <div class="unbrokenline"></div>
+          <div class="fake-list">
+            <h4>- ui-router is based on State routing</h4>
+            <h4>- We think of states instead of URLs and move based on them</h4>
+            <h4>- My recommendation: Create one app with routes per "regular page"</h4>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="content list">
+          <div class="unbrokenline"></div>
+          <h3>$scope inheritance</h3>
+          <div class="unbrokenline"></div>
+          <div class="fake-list">
+            <h4>- Controller scope inheritance works like JS Prototypal inheritance</h4>
+            <h4>- All scope objects are inherited by child controllers</h4>
+            <h4>- Directives scope inheritance is based on isolated vs non isolated</h4>
+            <h4 class="big important">- Remember the "dot model" rule</h4>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="content list">
+          <div class="unbrokenline"></div>
+          <h3>Filters</h3>
+          <div class="unbrokenline"></div>
+          <div class="fake-list">
+            <h4>- Filters should actually be called transformers</h4>
+            <h4>- They should be used to change how we show things in the UI</h4>
+            <h4>- Main usage is changing some text to display, filtering lists, formatting and sorting</h4>
+            <h4>- Thumb rule: Create one when you just need to change something to be displayed and NOT the model</h4>
+          </div>
+        </div>
+      </section>
+
+      <section data-bespoke-state="excercise">
+        <div class="content">
+          <h3>Excercise time: email-checker-routing</h3>
+        </div>
+      </section>
+
+      <section data-bespoke-state="excercise">
+        <div class="content">
+          <h3>It's all cool, but how do I call my server!?</h3>
+        </div>
+      </section>
+
+      <section data-bespoke-state="livecode long">
+        <div class="content">
+          <pre><code class="language-javascript">function Controller($http) {
+  $http({
+    method: 'POST',
+    url: 'https://example.com/url',
+    data: {
+      key: 'value'
+    }
+  }).then(function allOk(response) {
+    // use response.data
+  }, function error(response) {
+    // use response.status or response.data
+  })
+}</code></pre>
+        </div>
+      </section>
+
+      <section data-bespoke-state="livecode long">
+        <div class="content">
+          <pre><code class="language-javascript">function config(RestangularProvider) {
+  RestangularProvider.setBaseUrl('/api/v1');
+}
+function controller(Restangular) {
+  // Get /api/v1/user/123
+  Restangular.one('user', 123).get().then(function(user) {
+    // Get /api/v1/user/123/cars
+    user.getList('cars').then(function(cars)) {
+
+    }
+  })
+}
+</code></pre>
+        </div>
+      </section>
+
+      <section data-bespoke-state="livecode long">
+        <div class="content">
+          <pre><code class="language-javascript">function Controller($http) {
+  var promiseOfTelephone = $http({
+    method: 'POST',
+    url: 'https://example.com/get-user-info',
+    data: {
+      key: 'value'
+    }
+  }).then(function allOk(response) {
+    return response.data.telephone;
+  });</code></pre>
+        </div>
+      </section>
+
+      <section data-bespoke-state="livecode long">
+        <div class="content">
+          <pre><code class="language-javascript">function Controller($http) {
+  var promiseOfAddress = $http({
+    method: 'POST',
+    url: 'https://example.com/get-user-info',
+    data: {
+      key: 'value'
+    }
+  }).then(function allOk(response) {
+    return $http({
+      url: https://example.com/get-address',
+      method: 'POST',
+      data: {
+        userId: response.data.userId
+      }
+    });
+  });
+}</code></pre>
+        </div>
+      </section>
+
+      <section>
+        <div class="content list">
+          <div class="unbrokenline"></div>
+          <h3>$http</h3>
+          <div class="unbrokenline"></div>
+          <div class="fake-list">
+            <h4>- $http is the low level API for doing requests</h4>
+            <h4>- It's very easy to use, but you have to put the full url and the method to use</h4>
+            <h4>- It returns a promise</h4>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="content list">
+          <div class="unbrokenline"></div>
+          <h3>Restangular</h3>
+          <div class="unbrokenline"></div>
+          <div class="fake-list">
+            <h4>- It's build on top of $http</h4>
+            <h4>- It makes it easy to handle HTTP operations on elements.</h4>
+            <h4>- It handles nested resources and relationship between resources</h4>
+            <h4>- It can return either an object to be filled or a promise</h4>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="content list">
+          <div class="unbrokenline"></div>
+          <h3>Promises on AngularJS</h3>
+          <div class="unbrokenline"></div>
+          <div class="fake-list">
+            <h4>- They're absed on Q library</h4>
+            <h4>- They're A+ compilant</h4>
+            <h4>- It returns right a way an object with listeners for once the value is returned</h4>
+            <h4>- Main function is `then` which receives 2 functions, one for success and one for error</h4>
+            <h4>- If the then callback function returns a new value or a new promise, then a new promise of that value is returned by the then</h4>
+          </div>
+        </div>
+      </section>
+
+      <section data-bespoke-state="excercise">
+        <div class="content">
+          <h3>Excercise time: email-checker-routing</h3>
+        </div>
+      </section>
+
+      <section>
+        <div class="content">
+          <div class="byline">
+            <div class="classy">
+              Now,
+            </div>
+          </div>
+          <h1>We know all the basics</h1>
+          <div class="byline">
+            <div class="classy">
+              to start coding
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="content">
+          <div class="byline">
+            <div class="classy">
+              In this section
+            </div>
+          </div>
+          <h1>We're learning some advanced topics</h1>
+          <div class="byline">
+            <div class="classy">
+              that will help us get AngularJS to its maximum potential
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="content list">
+          <h3>So, how does this all work?</h3>
+        </div>
+      </section>
+
+      <section data-bespoke-state="concepts">
+        <div class="content">
+        </div>
+      </section>
+
+      <section>
+        <div class="content list">
+          <div class="unbrokenline"></div>
+          <h3>Concepts</h3>
+          <div class="unbrokenline"></div>
+          <div class="fake-list">
+            <h4>- Javascript is a "turn based game"</h4>
+            <h4>- JS code is called via a call stack</h4>
+            <h4>- $digest is a wrapper or decorator for regular function execution</h4>
+            <h4>- $apply performs a $digest</h4>
+            <h4 class="thumb">- Thumb rule: Call $apply when an event/function that's not known by AngularJS is called</h4>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="content list">
+          <h3>Then, what's a template?</h3>
+        </div>
+      </section>
+
+      <section data-bespoke-state="livecode">
+        <div class="content">
+          <h4>Markup</h4>
+          <pre><code class="language-markup">
+&lt;div&gt;
+  &lt;p&gt;My name is {{person.name | firstName}}&lt;/p&gt;
+  &lt;alert-button msg="'Cool message'"/&gt;
+&lt;/div&gt;
+          </code></pre>
+          Watching in JS
+          <pre><code class="language-javascript">
+$scope.personName = null;
+$scope.$watch('person.name', function(name) {
+  if (!name) return;
+
+  $scope.personName = $filter('firstName')(name);
+});
+
+// Or
+$scope.$watch('person.name | firstName', function(name) {
+  if (!name) return;
+
+  $scope.personName = name;
+});
+          </code></pre>
+        </div>
+      </section>
+
+      <section data-bespoke-state="livecode">
+        <div class="content">
+          Different watchers
+          <pre><code class="language-javascript">
+$scope.person = {name: "gonto"};
+$scope.$watch('person', function(newValue, oldValue) {
+  if (!newValue) return;
+
+  // Only called on reference change
+});
+
+$scope.$watch('person', function(newValue, oldValue) {
+  if (!newValue) return;
+
+  // Called on value changed
+}, true);
+          </code></pre>
+        </div>
+      </section>
+
+      <section>
+        <div class="content">
+          <h3>Now let's go back to directives</h3>
+        </div>
+      </section>
+
+      <section>
+        <div class="content list">
+          <div class="unbrokenline"></div>
+          <h3>Advanced Directives</h3>
+          <div class="unbrokenline"></div>
+          <div class="fake-list">
+            <h4>- Each directive has a compile and a link function</h4>
+            <h4>- It works very similar to handlebar's compile and render but it works with DOM instead of String</h4>
+            <h4>- Compile returns a linker function that given the context will modify the DOM</h4>
+            <h4>- The linker is the function that receives the context</h4>
+            <h4 class="thumb">- Thumb rule: You'll only use compile if you need to reuse the template in the future (ng-repeat, ng-if)</h4>
+          </div>
+        </div>
+      </section>
+
+
 
 
       <section>

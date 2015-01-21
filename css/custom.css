@@ -205,6 +205,18 @@ article.excercise {
   background-color: green;
 }
 
+article.demo {
+  background-color: red;
+}
+
+article.concepts::before {
+  -webkit-filter: none;
+  -moz-filter: none;
+  filter: none;
+  background-size: 60%;
+  background-image: url("../img/concepts.png");
+}
+
 .profile {
   margin: 0 auto;
   width: 300px;
