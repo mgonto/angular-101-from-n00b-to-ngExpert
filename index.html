@@ -1116,7 +1116,7 @@ function controller(Restangular) {
               Now,
             </div>
           </div>
-          <h1>We know all the basics</h1>
+          <h3>We know all the basics</h3>
           <div class="byline">
             <div class="classy">
               to start coding
@@ -1132,7 +1132,7 @@ function controller(Restangular) {
               In this section
             </div>
           </div>
-          <h1>We're learning some advanced topics</h1>
+          <h3>We're learning some advanced topics</h3>
           <div class="byline">
             <div class="classy">
               that will help us get AngularJS to its maximum potential
@@ -1238,6 +1238,45 @@ $scope.$watch('person', function(newValue, oldValue) {
             <h4>- Compile returns a linker function that given the context will modify the DOM</h4>
             <h4>- The linker is the function that receives the context</h4>
             <h4 class="thumb">- Thumb rule: You'll only use compile if you need to reuse the template in the future (ng-repeat, ng-if)</h4>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="content list">
+          <div class="unbrokenline"></div>
+          <h2>Advanced Directives</h2>
+          <div class="unbrokenline"></div>
+          <div class="fake-list">
+            <h4>- You can have multiple directives at one element and have them depend on each other. You use the require keyword for this.</h4>
+            <h4>- Each directive can share its controller with sibling or father/son directives</h4>
+            <h4>- This is used a lot in transclusion and ngModel as we'll see now</h4>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="content list">
+          <div class="unbrokenline"></div>
+          <h2>ngModel</h2>
+          <div class="unbrokenline"></div>
+          <div class="fake-list">
+            <h4>- It's a very simple directive with a very cool controller</h4>
+            <h4>- Let's <a href="http://docs.angularjs.org/api/ng.directive:ngModel.NgModelController">check the documentation</a> to see what you can do</h4>
+            <h4>- It basically allows for adding transformers for DomToValue, ValueToDom and allows for setting a model to be valid or not.</h4>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="content list">
+          <div class="unbrokenline"></div>
+          <h2>formController</h2>
+          <div class="unbrokenline"></div>
+          <div class="fake-list">
+            <h4>- By entering a form with name or a ngForm, we're already using this directive</h4>
+            <h4>- It allows us to handle validations of our models joining forces with ngModel</h4>
+            <h4>- It doesn't send form submission to the server unless there's an action. Submission is triggered by the first submit button with ngClick or ngSubmit directive on form element.</h4>
           </div>
         </div>
       </section>
