@@ -1,6 +1,7 @@
 angular.module('emailChecker.details', ['ui.router'])
   .config(function($stateProvider) {
 
+    // Put route info here
   })
   .controller("DetailsCtrl", function() {
 

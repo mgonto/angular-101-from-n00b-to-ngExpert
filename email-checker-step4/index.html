@@ -1,0 +1,27 @@
+<html>
+  <head>
+
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="app.css">
+  </head>
+  <body ng-app="emailChecker" ng-controller="MainCtrl">
+
+    <div class="email-container jumbotron center-block">
+      <h1>Email checker</h1>
+      <form role="form">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="text" ng-model="email" class="form-control" placeholder="Email address">
+        </div>
+        <label>This email is {{validity}}</label>
+        <email-checker-button label="Is this an email?" email="email" />
+      </form>
+
+    </div>
+
+
+    <!-- Load scripts -->
+    <script src="../js/angular.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

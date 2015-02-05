@@ -1,0 +1,26 @@
+Ejercicio 1:
+
+Implementar email checker. Muestra alert con si es un email o no
+
+Ejercicio 2:
+
+Extraer el servicio de Alerta a un servicio externo. Como bonus point, agregarle que se pueda configurar via .config() una lista de Blacklist
+
+
+Ejercicio 3:
+
+Extraer boton de chequear email a directive
+<email-checker-button label="Is this an email?" email="email" />
+
+Ejercicio 4:
+Agregarle la pagina del detalle de un email. Agregar boton + implementar detalle.
+
+Ejercicio 5:
+
+Agregar http. Hacer POST a https://ng-email-checker.herokuapp.com/check-email enviando EMAIL como data.
+
+Ejercicio 6:
+
+Agregar watch que chequee email.
+<label>This email is {{validity}}</label>
+
