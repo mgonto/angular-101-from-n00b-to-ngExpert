@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Angular 101: From n00b to ngExpert</title>
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/prism.css">
+        <link rel="stylesheet" href="css/custom.css">
+    </head>
+    <body>
+    <article>
+      <section data-bespoke-state="start">
+        <div class="content">
+          <div class="unbrokenline"></div>
+          <h1>Angular 101</h1>
+          <h1>From n00b to ngExpert</h1>
+          <div class="byline">
+            <div class="classy">
+              by Martin Gontovnikas
+            </div>
+          </div>
+          <div class="profile">
+            <div class="rounded-image">
+              <img src="img/gonto.jpg">
+            </div>
+            <h3>@mgonto</h3>
+          </div>
+        </div>
+      </section>
+
+      <section data-bespoke-state="developer">
+        <div class="content">
+          <div class="byline">
+            <div class="classy">
+              I am a
+            </div>
+          </div>
+          <h3>software developer</h3>
+          <div class="byline">
+            <div class="classy">
+              from Buenos Aires, Argentina
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section data-bespoke-state="auth0">
+        <div class="content">
+          <div class="byline">
+            <div class="classy">
+              working at
+            </div>
+          </div>
+          <h3>Auth0 Inc.</h3>
+          <div class="byline">
+            <div class="classy">
+              making stuff happen
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section data-bespoke-state="js">
+        <div class="content">
+          <div class="byline">
+            <div class="classy">
+              used to be coding
+            </div>
+          </div>
+          <h3>Javascript</h3>
+          <div class="byline">
+            <div class="classy">
+              all day long
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section data-bespoke-state="programming">
+        <div class="content"></div>
+      </section>
+
+      <section data-bespoke-state="advocate">
+        <div class="content">
+          <div class="byline">
+            <div class="classy">
+              Now I work as a
+            </div>
+          </div>
+          <h3>Developer Advocate</h3>
+          <div class="unbrokenline"></div>
+        </div>
+      </section>
+
+      <section data-bespoke-state="smoke">
+        <div class="content"></div>
+      </section>
+
+      <section data-bespoke-state="onemore">
+        <div class="content">
+        </div>
+      </section>
+
+      <section>
+        <div class="content">
+          <a target="_blank" href="https://auth0.com/signup"><img src="img/badge.png"></a>
+          <button target="_blank" href="https://auth0.com/signup" class="btn-free">Create Free Account</button>
+          <h4><a target="_blank" href="https://auth0.com/signup">auth0.com/signup</a></h4>
+        </div>
+      </section>
+
+
+
+      <section>
+        <div class="content">
+          <h3>So let's start with the class!</h3>
+        </div>
+      </section>
+
+      <section>
+        <div class="content list">
+          <div class="unbrokenline"></div>
+          <h3>Angular's creation</h3>
+          <div class="unbrokenline"></div>
+          <div class="fake-list">
+            <h4>- It was created by Miško Hevery</h4>
+            <h4 class="important">- All previous MV* FrontEnd frameworks had 80% of the code for DOM manipulation and 20% for code that matters</h4>
+            <h4>- You had to explicitly say exactly what you wanted to do with DOM every time</h4>
+            <h4>- It wasn't fast to develop at all</h4>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="content list">
+          <div class="unbrokenline"></div>
+          <h3>Angular's 4D</h3>
+          <div class="unbrokenline"></div>
+          <div class="fake-list" style="min-width: 500px">
+            <h4 class="important">- Declarative</h4>
+            <h4>- Data Binding</h4>
+            <h4>- Directives</h4>
+            <h4>- Dependency Injection</h4>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="content">
+          <h3>So let's start learning this</h3>
+        </div>
+      </section>
+
+      <section>
+        <div class="content">
+          <h3>First thing we need to do is create an app</h3>
+        </div>
+      </section>
+
+      <section data-bespoke-state="livecode long">
+        <div class="content">
+          <h4>We add the ng-app attribute</h4>
+          <pre><code class="language-markup">
+&lt;div ng-app="questionarie" &gt;
+  &lt;span&gt;Hello World&lt;/span&gt;
+&lt;/div&gt;
+          </code></pre>
+          <h4>We create the APP in JS</h4>
+          <pre><code class="language-javascript">
+angular.module('questionarie', [])
+          </code></pre>
+
+        </div>
+      </section>
+
+      <section>
+        <div class="content list">
+          <div class="unbrokenline"></div>
+          <h3>Angular App</h3>
+          <div class="unbrokenline"></div>
+          <div class="fake-list">
+            <h4>- Every app is a module</h4>
+            <h4>- A module can depend on other modules (apps)</h4>
+            <h4>- Everything inside the HTML element with the ng-app will be the Angular app</h4>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="content">
+          <h3>Now let's add some logic</h3>
+        </div>
+      </section>
+
+      <section data-bespoke-state="livecode long">
+        <div class="content">
+          <div data-angular-app="questionarie" ng-controller="QuestionarieCtrl">
+            <label>Name: </label>
+            <div>
+              <input type="text" ng-model="person.name" />
+            </div>
+            <label>Do you like Nyan Cat?: </label>
+            <div>
+              <input type="checkbox" ng-model="person.likeNyan" />
+            </div>
+            <input type="button" ng-click="showProfileCard()" value="Show profile card">
+            <input type="button" ng-click="showResponse()" value="What is {{person.name}}?">
+            <div ng-show="cardShown" class="card">
+              <p class="name">Description of {{person.name}}</p>
+              <div ng-switch="person.likeNyan">
+                <p ng-switch-when="true">This person is really fun</p>
+                <p ng-switch-when="false">This person is extremely boring</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section data-bespoke-state="livecode long">
+        <div class="content">
+          <pre data-line="1"><code class="language-markup">&lt;div ng-app=&quot;questionarie&quot; ng-controller=&quot;QuestionarieCtrl&quot;&gt;
+  &lt;label&gt;Name: &lt;/label&gt;
+  &lt;input type=&quot;text&quot; ng-model=&quot;person.name&quot; /&gt;
+  &lt;label&gt;Do you like Nyan Cat?: &lt;/label&gt;
+  &lt;input type=&quot;checkbox&quot; ng-model=&quot;person.likeNyan&quot; /&gt;
+
+  &lt;input type=&quot;button&quot; ng-click=&quot;showProfileCard()&quot; value=&quot;Show profile card&quot;&gt;
+  &lt;input type=&quot;button&quot; ng-click=&quot;showResponse()&quot; value=&quot;What is {{person.name}}?&quot;&gt;
+
+  &lt;div ng-show=&quot;cardShown&quot; class=&quot;card&quot;&gt;
+    &lt;p class=&quot;name&quot;&gt;Description of {{person.name}}&lt;/p&gt;
+    &lt;div ng-switch=&quot;person.likeNyan&quot;&gt;
+      &lt;p ng-switch-when=&quot;true&quot;&gt;This person is really fun&lt;/p&gt;
+      &lt;p ng-switch-when=&quot;false&quot;&gt;This person is extremely boring&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </section>
+
+      <section data-bespoke-state="livecode long">
+        <div class="content nofade">
+          <pre data-line="3"><code class="language-markup">&lt;div ng-app=&quot;questionarie&quot; ng-controller=&quot;QuestionarieCtrl&quot;&gt;
+  &lt;label&gt;Name: &lt;/label&gt;
+  &lt;input type=&quot;text&quot; ng-model=&quot;person.name&quot; /&gt;
+  &lt;label&gt;Do you like Nyan Cat?: &lt;/label&gt;
+  &lt;input type=&quot;checkbox&quot; ng-model=&quot;person.likeNyan&quot; /&gt;
+
+  &lt;input type=&quot;button&quot; ng-click=&quot;showProfileCard()&quot; value=&quot;Show profile card&quot;&gt;
+  &lt;input type=&quot;button&quot; ng-click=&quot;showResponse()&quot; value=&quot;What is {{person.name}}?&quot;&gt;
+
+  &lt;div ng-show=&quot;cardShown&quot; class=&quot;card&quot;&gt;
+    &lt;p class=&quot;name&quot;&gt;Description of {{person.name}}&lt;/p&gt;
+    &lt;div ng-switch=&quot;person.likeNyan&quot;&gt;
+      &lt;p ng-switch-when=&quot;true&quot;&gt;This person is really fun&lt;/p&gt;
+      &lt;p ng-switch-when=&quot;false&quot;&gt;This person is extremely boring&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </section>
+
+      <section data-bespoke-state="livecode long">
+        <div class="content nofade">
+          <pre data-line="5"><code class="language-markup">&lt;div ng-app=&quot;questionarie&quot; ng-controller=&quot;QuestionarieCtrl&quot;&gt;
+  &lt;label&gt;Name: &lt;/label&gt;
+  &lt;input type=&quot;text&quot; ng-model=&quot;person.name&quot; /&gt;
+  &lt;label&gt;Do you like Nyan Cat?: &lt;/label&gt;
+  &lt;input type=&quot;checkbox&quot; ng-model=&quot;person.likeNyan&quot; /&gt;
+
+  &lt;input type=&quot;button&quot; ng-click=&quot;showProfileCard()&quot; value=&quot;Show profile card&quot;&gt;
+  &lt;input type=&quot;button&quot; ng-click=&quot;showResponse()&quot; value=&quot;What is {{person.name}}?&quot;&gt;
+
+  &lt;div ng-show=&quot;cardShown&quot; class=&quot;card&quot;&gt;
+    &lt;p class=&quot;name&quot;&gt;Description of {{person.name}}&lt;/p&gt;
+    &lt;div ng-switch=&quot;person.likeNyan&quot;&gt;
+      &lt;p ng-switch-when=&quot;true&quot;&gt;This person is really fun&lt;/p&gt;
+      &lt;p ng-switch-when=&quot;false&quot;&gt;This person is extremely boring&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </section>
+
+      <section data-bespoke-state="livecode long">
+        <div class="content nofade">
+          <pre data-line="7,8"><code class="language-markup">&lt;div ng-app=&quot;questionarie&quot; ng-controller=&quot;QuestionarieCtrl&quot;&gt;
+  &lt;label&gt;Name: &lt;/label&gt;
+  &lt;input type=&quot;text&quot; ng-model=&quot;person.name&quot; /&gt;
+  &lt;label&gt;Do you like Nyan Cat?: &lt;/label&gt;
+  &lt;input type=&quot;checkbox&quot; ng-model=&quot;person.likeNyan&quot; /&gt;
+
+  &lt;input type=&quot;button&quot; ng-click=&quot;showProfileCard()&quot; value=&quot;Show profile card&quot;&gt;
+  &lt;input type=&quot;button&quot; ng-click=&quot;showResponse()&quot; value=&quot;What is {{person.name}}?&quot;&gt;
+
+  &lt;div ng-show=&quot;cardShown&quot; class=&quot;card&quot;&gt;
+    &lt;p class=&quot;name&quot;&gt;Description of {{person.name}}&lt;/p&gt;
+    &lt;div ng-switch=&quot;person.likeNyan&quot;&gt;
+      &lt;p ng-switch-when=&quot;true&quot;&gt;This person is really fun&lt;/p&gt;
+      &lt;p ng-switch-when=&quot;false&quot;&gt;This person is extremely boring&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </section>
+
+      <section data-bespoke-state="livecode long">
+        <div class="content nofade">
+          <pre data-line="10-16"><code class="language-markup">&lt;div ng-app=&quot;questionarie&quot; ng-controller=&quot;QuestionarieCtrl&quot;&gt;
+  &lt;label&gt;Name: &lt;/label&gt;
+  &lt;input type=&quot;text&quot; ng-model=&quot;person.name&quot; /&gt;
+  &lt;label&gt;Do you like Nyan Cat?: &lt;/label&gt;
+  &lt;input type=&quot;checkbox&quot; ng-model=&quot;person.likeNyan&quot; /&gt;
+
+  &lt;input type=&quot;button&quot; ng-click=&quot;showProfileCard()&quot; value=&quot;Show profile card&quot;&gt;
+  &lt;input type=&quot;button&quot; ng-click=&quot;showResponse()&quot; value=&quot;What is {{person.name}}?&quot;&gt;
+
+  &lt;div ng-show=&quot;cardShown&quot; class=&quot;card&quot;&gt;
+    &lt;p class=&quot;name&quot;&gt;Description of {{person.name}}&lt;/p&gt;
+    &lt;div ng-switch=&quot;person.likeNyan&quot;&gt;
+      &lt;p ng-switch-when=&quot;true&quot;&gt;This person is really fun&lt;/p&gt;
+      &lt;p ng-switch-when=&quot;false&quot;&gt;This person is extremely boring&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </section>
+
+      <section data-bespoke-state="livecode long">
+        <div class="content">
+          <pre><code class="language-javascript">angular.module('questionarie', []);
+  .controller('QuestionarieCtrl', function($scope) {
+
+  $scope.person = {
+    name: 'John',
+    likeNyan: false
+  };
+
+  $scope.showProfileCard = function() {
+    $scope.cardShown = true;
+  };
+
+  $scope.showResponse = function() {
+    alert($scope.person.likeNyan ? "Fun" : "Boring");
+  }
+});
+</code></pre>
+        </div>
+      </section>
+
+
+      <section>
+        <div class="content list">
+          <div class="unbrokenline"></div>
+          <h3>Controllers & Scope</h3>
+          <div class="unbrokenline"></div>
+          <div class="fake-list">
+            <h4>- The controller interacts with the model and receives input from the view</h4>
+            <h4>- The $scope is the glue between the view and the controller</h4>
+            <h4>- ng-model creates bidirectional data binding between DOM element and $scope</h4>
+            <h4>- ng-click allows us to send an event to the controller</h4>
+            <h4 class="thumb">- Thumb rule: Never use DOM elements from them</h4>
+          </div>
+        </div>
+      </section>
+
+      <section data-bespoke-state="excercise">
+        <div class="content">
+          <h3>Live demo time</h3>
+        </div>
+      </section>
+
+      <section>
+        <div class="content">
+          <div class="byline">
+            <div class="classy">
+              This is the end of the presentation, so
+            </div>
+          </div>
+          <h3>Thank you for listening</h3>
+          <div class="byline">
+            <div class="classy">
+              or at least pretending to
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section data-bespoke-state="final" class="intro">
+        <div class="content">
+          <div class="byline">
+            <div class="classy">
+              This has been
+            </div>
+          </div>
+          <h1>Angular 101</h1>
+          <h1>From n00b to ngExpert</h1>
+          <div class="byline">
+            <div class="classy">
+              by Martin Gontovnikas
+            </div>
+          </div>
+          <div class="profile">
+            <div class="rounded-image">
+              <img src="img/gonto.jpg">
+            </div>
+            <h3>@mgonto</h3>
+          </div>
+        </div>
+      </section>
+
+    </article>
+    <script type="text/javascript">
+      WebFontConfig = {
+        google: { families: [ 'Tauri::latin', 'Alegreya:400italic:latin' ] }
+      };
+      (function() {
+        var wf = document.createElement('script');
+        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+          '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+      })();
+    </script>
+    <script src="js/bespoke.js"></script>
+    <script src="js/prism.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/angular.js"></script>
+    <script src="js/app.bootstrap.js"></script>
+    <script src="js/app.basic.js"></script>
+    <script src="js/deck.js"></script>
+    </body>
+</html>
